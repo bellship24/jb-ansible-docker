@@ -1,6 +1,7 @@
 galaxy_info:
   author: jb 
   namespace: jb
+  role_name: jb_ansible_docker
   description: Install docker
   company: no
 
