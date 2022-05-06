@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include jb.ansible_docker"
+      include_role:
+        name: "jb.ansible_docker"

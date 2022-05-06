@@ -1,0 +1,41 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+platforms:
+  - name: docker-centos7
+    image: jb-centos7-ansible:v0.1
+    privileged: True
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: True
+  - name: docker-ubuntu20
+    image: jb-ubuntu2004-ansible:v0.1
+    privileged: True
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: True
+  - name: docker-ubuntu18
+    image: jb-ubuntu1804-ansible:v0.1
+    privileged: True
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: True
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
